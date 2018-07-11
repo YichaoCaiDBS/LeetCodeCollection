@@ -1,0 +1,27 @@
+def twoSum(nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        for i in range(len(nums)):
+            restL = nums[:i] 
+            restR = nums[i+1:]
+            remain = target - nums[i]
+            if(remain in restL):
+                return [restL.index(remain),i ]
+            elif(remain in restR):
+                return [i, restR.index(remain) + i + 1]
+        return "There is no solution."
+
+
+def twoSum2(nums,target):
+    DICT = {}
+        for i in range(len(nums)):
+            remain = target - nums[i]
+            if(remain in DICT.keys()):
+                solution = [i, DICT[remain]]
+                solution.sort()
+                return solution
+            DICT[nums[i]] = i
+        return "There is no solution."
